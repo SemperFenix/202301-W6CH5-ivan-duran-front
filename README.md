@@ -1,46 +1,50 @@
-# Getting Started with Create React App
+# Scrubs Wiki
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template.
+Este front pretende comunicarse con un backend con información de la serie Scrubs.
 
-## Available Scripts
+Este proyecto se hará utilizando Redux.
 
-In the project directory, you can run:
+## Estructura
 
-### `npm start`
+- [ ] *Inicio*: Mostrará información sobre cómo utilizar el sitio
+- [ ] *Personajes*: Listado de los personajes dentro en la API
+- [ ] *Favoritos*: Personajes seleccionados por el usuario
+- [ ] *Nuevo personaje*: Permite añadir un personaje de la serie
+- [ ] *Detalles*: Muestra los detalles del personaje seleccionado
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Componentes
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Home
+- Menu
+- Characters => Componente que estructura la página de personajes
+- Card => Ficha de personaje genérica
+- Details => Componente que estructura la página de detalles
+- DetailsCard => Ficha de personaje con datos extendidos
+- NewCharacter => Formulario para introducir un nuevo personaje en la "API"
 
-### `npm test`
+## Responsabilidades
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Home:
+  - Renderizar la información inicial
+  - Recibir del estado cuántos elementos hay cargados en la API
+- Menu:
+  - Renderiza el listado de opciones con las secciones de las web
+  - Interacciona onClick con el usuario para ir a las distintas secciones
+- Characters:
+  - Renderiza los distintos componentes Card con la información básica de cada personaje
+  - Recibe del estado el listado de personajes a cargar
+  - Envía por props la información del personaje a cargar al componente Card
+- Card:
+  - Renderiza un objeto con la información del personaje
+  - Recibe por props la información a mostrar
+  - OnClick actualiza en el estado la información actual y navega a detalles
+- Detalles:
+  - Renderiza el componente DetailsCard
+  - Recibe del estado la información del personaje actual
+  - Envía por props la información al componente DetailsCard
+- DetailsCard:
+  - Renderiza una tarjeta con la información extendida de un personaje
+  - Recibe por props la información a utilizar
+- NewCharacter:
+  - Renderiza un formulario para la creación de un personaje
+  - Envía la información al hook para crear un personaje nuevo en el servidor
