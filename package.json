@@ -1,5 +1,5 @@
 {
-  "name": "my-app",
+  "name": "w6ch5-ivan-duran-front",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -22,8 +22,15 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --coverage",
+    "test:prod": "react-scripts test --coverage --watchAll=false",
     "eject": "react-scripts eject"
+  },
+  "jest": {
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/src/reportWebVitals.ts",
+      "<rootDir>/src/index.ts"
+    ]
   },
   "eslintConfig": {
     "extends": [
