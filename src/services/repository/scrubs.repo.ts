@@ -3,7 +3,7 @@ import { Scrub } from "../../models/scrub.model";
 export interface ScrubsRepoStructure {
   readAll(): Promise<Scrub[]>;
   readOne(id: Scrub["id"]): Promise<Scrub>;
-  create(info: Scrub): Promise<Scrub>;
+  create(info: Partial<Scrub>): Promise<Scrub>;
   update(info: Partial<Scrub>): Promise<Scrub>;
   delete(id: Scrub["id"]): Promise<void>;
 }
@@ -44,7 +44,9 @@ export class ScrubsRepo implements ScrubsRepoStructure {
     return data;
   }
 
-  async create(info: Scrub): Promise<Scrub> {
+  // Create no tiene que recibir el ID como parámetro, puesto que lo va a asignar el server.
+
+  async create(info: Partial<Scrub>): Promise<Scrub> {
     const resp = await fetch(this.url, {
       method: "POST",
       body: JSON.stringify(info),
