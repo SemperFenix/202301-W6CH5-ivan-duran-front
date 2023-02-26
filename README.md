@@ -30,7 +30,7 @@ Este proyecto se hará utilizando Redux.
 - Menu:
   - Renderiza el listado de opciones con las secciones de las web
   - Interacciona onClick con el usuario para ir a las distintas secciones
-- Characters:
+- Gallery:
   - Renderiza los distintos componentes Card con la información básica de cada personaje
   - Recibe del estado el listado de personajes a cargar
   - Envía por props la información del personaje a cargar al componente Card
@@ -38,14 +38,14 @@ Este proyecto se hará utilizando Redux.
   - Renderiza un objeto con la información del personaje
   - Recibe por props la información a mostrar
   - OnClick actualiza en el estado la información actual y navega a detalles
-- Detalles:
+- Details:
   - Renderiza el componente DetailsCard
   - Recibe del estado la información del personaje actual
   - Envía por props la información al componente DetailsCard
 - DetailsCard:
   - Renderiza una tarjeta con la información extendida de un personaje
   - Recibe por props la información a utilizar
-- NewCharacter:
+- NewScrub:
   - Renderiza un formulario para la creación de un personaje
   - Envía la información al hook para crear un personaje nuevo en el servidor
 
