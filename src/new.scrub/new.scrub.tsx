@@ -27,7 +27,7 @@ export function NewScrub() {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form data-testid="form" onSubmit={handleSubmit}>
         <input type="text" placeholder="Scrub name" />
         <input type="text" placeholder="Scrub image link" />
         <input type="text" placeholder="Scrub occupattion" />
