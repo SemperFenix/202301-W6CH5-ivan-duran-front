@@ -95,20 +95,7 @@ describe("Given the scrubsReducer", () => {
       const scrubs = scrubsReducer(mockState, mockReadAll);
       expect(scrubs).toEqual({
         ...mockState,
-        scrubs: [
-          {
-            id: 1,
-            name: "John D. Dorian",
-            occupattion: "doctor",
-            personality: "hugger",
-          },
-          {
-            id: 2,
-            name: "Percyval U. Cox",
-            occupattion: "doctor",
-            personality: "absolute truth",
-          },
-        ],
+        scrubs: mockScrubs,
       });
     });
   });
@@ -131,12 +118,16 @@ describe("Given the scrubsReducer", () => {
             name: "Test ok",
             occupattion: "testing",
             personality: "tester",
+            extend_perso: "",
+            img: "",
           },
           {
             id: 2,
             name: "Test2",
             occupattion: "testing2",
             personality: "tester2",
+            extend_perso: "",
+            img: "",
           },
         ],
       });
@@ -164,6 +155,8 @@ describe("Given the scrubsReducer", () => {
             name: "Test2",
             occupattion: "testing2",
             personality: "tester2",
+            extend_perso: "",
+            img: "",
           },
         ],
       });
