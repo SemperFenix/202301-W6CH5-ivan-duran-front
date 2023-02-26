@@ -1,7 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { act, render, screen } from "@testing-library/react";
+import { useMemo } from "react";
 import { Provider } from "react-redux";
+import { useScrubs } from "../hooks/use.scrubs";
+import { Scrub } from "../models/scrub.model";
 import { scrubsReducer } from "../reducer/scrubs.reducer";
+import { ScrubsRepo } from "../services/repository/scrubs.repo";
 
 import { Details } from "./details";
 
@@ -35,6 +39,7 @@ const mockStore = configureStore({
 describe("Given the details component", () => {
   describe("When it is called", () => {
     test("Then it should the component card details", async () => {
+      // eslint-disable-next-line testing-library/no-unnecessary-act
       await act(async () => {
         render(
           <Provider store={mockStore}>
