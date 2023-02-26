@@ -9,7 +9,9 @@ export interface ScrubsRepoStructure {
 }
 
 export class ScrubsRepo implements ScrubsRepoStructure {
-  constructor(public url: string = "http://localhost:4500/scrubs") {}
+  constructor(
+    public url: string = "https://w6ch5-ivan-backend.onrender.com/scrubs"
+  ) {}
 
   async readAll(): Promise<Scrub[]> {
     const resp = await fetch(this.url);
@@ -46,7 +48,7 @@ export class ScrubsRepo implements ScrubsRepoStructure {
 
   // Create no tiene que recibir el ID como parámetro, puesto que lo va a asignar el server.
 
-  async create(info: Partial<Scrub>): Promise<Scrub> {
+  async create(info: Scrub): Promise<Scrub> {
     const resp = await fetch(this.url, {
       method: "POST",
       body: JSON.stringify(info),

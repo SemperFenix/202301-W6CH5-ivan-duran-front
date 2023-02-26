@@ -62,7 +62,7 @@ describe("Given the scrubs repo", () => {
 
       const create = await repo.create({
         test: "test4",
-      } as unknown as Partial<Scrub>);
+      } as unknown as Scrub);
       expect(create).toEqual({ id: 3, test: "test4" });
     });
   });
@@ -111,7 +111,7 @@ describe("Given the scrubs repo", () => {
       global.fetch = jest.fn().mockResolvedValue("Error");
       const create = repo.create({
         test: "test",
-      } as unknown as Partial<Scrub>);
+      } as unknown as Scrub);
       await expect(create).rejects.toThrow();
     });
   });
