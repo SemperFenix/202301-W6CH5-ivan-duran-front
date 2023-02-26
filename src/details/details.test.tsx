@@ -1,11 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { act, render, screen } from "@testing-library/react";
-import { useMemo } from "react";
 import { Provider } from "react-redux";
-import { useScrubs } from "../hooks/use.scrubs";
 import { Scrub } from "../models/scrub.model";
 import { scrubsReducer } from "../reducer/scrubs.reducer";
-import { ScrubsRepo } from "../services/repository/scrubs.repo";
 
 import { Details } from "./details";
 
