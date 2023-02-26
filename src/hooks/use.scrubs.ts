@@ -15,7 +15,7 @@ export function useScrubs(repo: ScrubsRepo) {
         const data = await repo.readAll();
         dispatch(ac.readAllCreator(data));
       } catch (error) {
-        console.log((error as Error).message);
+        console.error("Error");
       }
     };
 
@@ -27,7 +27,7 @@ export function useScrubs(repo: ScrubsRepo) {
       const data = await repo.readOne(id);
       dispatch(ac.readOneCreator(data));
     } catch (error) {
-      console.log((error as Error).message);
+      console.error((error as Error).message);
     }
   };
 
@@ -36,7 +36,7 @@ export function useScrubs(repo: ScrubsRepo) {
       const data = await repo.create(info);
       dispatch(ac.createCreator(data));
     } catch (error) {
-      console.log((error as Error).message);
+      console.error((error as Error).message);
     }
   };
 
@@ -45,7 +45,7 @@ export function useScrubs(repo: ScrubsRepo) {
       const data = await repo.update(info);
       dispatch(ac.updateCreator(data));
     } catch (error) {
-      console.log((error as Error).message);
+      console.error((error as Error).message);
     }
   };
 
