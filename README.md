@@ -48,3 +48,9 @@ Este proyecto se hará utilizando Redux.
 - NewCharacter:
   - Renderiza un formulario para la creación de un personaje
   - Envía la información al hook para crear un personaje nuevo en el servidor
+
+## Dudas
+
+- Cómo gestionar correctamente los errores del hook y sus tests.
+
+- Cómo testear el error de un método del propio hook que no llama al repo.
