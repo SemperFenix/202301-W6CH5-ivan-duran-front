@@ -49,7 +49,12 @@ describe("Given the scrubsReducer", () => {
 
   const mockDelete = {
     type: scrubsActions.delete,
-    payload: 2,
+    payload: 1,
+  };
+
+  const mockAddActual = {
+    type: scrubsActions.addActualInfo,
+    payload: mockScrub,
   };
 
   const mockState: State = {
@@ -102,6 +107,36 @@ describe("Given the scrubsReducer", () => {
             personality: "tester",
           },
         ],
+      });
+    });
+  });
+
+  describe("When passing a create action", () => {
+    test("Then it should return the state with the scrub entry added", () => {
+      const scrubs = scrubsReducer(mockState, mockCreate);
+      expect(scrubs).toEqual({
+        ...mockState,
+        scrubs: [...mockState.scrubs, mockCreate.payload],
+      });
+    });
+  });
+
+  describe("When passing a delete action", () => {
+    test("Then it should return the state with the scrub entry deleted", () => {
+      const scrubs = scrubsReducer(mockState, mockDelete);
+      expect(scrubs).toEqual({
+        ...mockState,
+        scrubs: [],
+      });
+    });
+  });
+
+  describe("When passing a addActual action", () => {
+    test("Then it should return the state with the actualScrub updated", () => {
+      const scrubs = scrubsReducer(mockState, mockAddActual);
+      expect(scrubs).toEqual({
+        ...mockState,
+        actualScrub: mockAddActual.payload,
       });
     });
   });
