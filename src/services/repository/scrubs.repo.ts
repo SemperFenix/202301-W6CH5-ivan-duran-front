@@ -48,7 +48,7 @@ export class ScrubsRepo implements ScrubsRepoStructure {
 
   // Create no tiene que recibir el ID como parámetro, puesto que lo va a asignar el server.
 
-  async create(info: Partial<Scrub>): Promise<Scrub> {
+  async create(info: Scrub): Promise<Scrub> {
     const resp = await fetch(this.url, {
       method: "POST",
       body: JSON.stringify(info),
