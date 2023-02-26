@@ -9,7 +9,9 @@ export interface ScrubsRepoStructure {
 }
 
 export class ScrubsRepo implements ScrubsRepoStructure {
-  constructor(public url: string = "http://localhost:4500/scrubs") {}
+  constructor(
+    public url: string = "https://w6ch5-ivan-backend.onrender.com/scrubs"
+  ) {}
 
   async readAll(): Promise<Scrub[]> {
     const resp = await fetch(this.url);
