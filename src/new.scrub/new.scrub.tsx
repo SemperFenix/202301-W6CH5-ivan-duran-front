@@ -1,17 +1,16 @@
-import { SyntheticEvent, useMemo, useRef } from "react";
+import { SyntheticEvent, useMemo } from "react";
 import { useScrubs } from "../hooks/use.scrubs";
 import { Scrub } from "../models/scrub.model";
 import { ScrubsRepo } from "../services/repository/scrubs.repo";
 
 export function NewScrub() {
   const repo = useMemo(() => new ScrubsRepo(), []);
-  const formNewScrubRef = useRef<HTMLFormElement>(null);
 
   const { scrubs, createScrub } = useScrubs(repo);
 
   const handleSubmit = (ev: SyntheticEvent) => {
     ev.preventDefault();
-    const formNewScrub = formNewScrubRef.current as HTMLFormElement;
+    const formNewScrub = document.querySelector("form") as HTMLFormElement;
     const newId = Math.max(...scrubs.scrubs.map((item) => item.id));
 
     const newScrub: Scrub = {
@@ -28,7 +27,7 @@ export function NewScrub() {
 
   return (
     <>
-      <form onSubmit={handleSubmit} ref={formNewScrubRef}>
+      <form onSubmit={handleSubmit}>
         <input type="text" placeholder="Scrub name" />
         <input type="text" placeholder="Scrub image link" />
         <input type="text" placeholder="Scrub occupattion" />

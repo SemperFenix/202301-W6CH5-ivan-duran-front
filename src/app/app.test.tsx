@@ -4,13 +4,21 @@ import { Provider } from "react-redux";
 import App from "./app";
 import { store } from "../store/store";
 
-test("renders learn react link", () => {
-  render(
-    <Provider store={store}>
-      <App />
-    </Provider>
-  );
+import { MemoryRouter } from "react-router-dom";
 
-  const element = screen.getByText(/En construcción/i);
-  expect(element).toBeInTheDocument();
+describe("Given the App component", () => {
+  describe("When renderized", () => {
+    test("Then it should renderize the home", () => {
+      render(
+        <Provider store={store}>
+          <MemoryRouter>
+            <App />
+          </MemoryRouter>
+        </Provider>
+      );
+
+      const element = screen.getByRole("heading");
+      expect(element).toBeInTheDocument();
+    });
+  });
 });
