@@ -9,12 +9,16 @@ describe("Given the scrubsReducer", () => {
       name: "John D. Dorian",
       occupattion: "doctor",
       personality: "hugger",
+      extend_perso: "",
+      img: "",
     },
     {
       id: 2,
       name: "Percyval U. Cox",
       occupattion: "doctor",
       personality: "absolute truth",
+      extend_perso: "",
+      img: "",
     },
   ];
 
@@ -23,6 +27,8 @@ describe("Given the scrubsReducer", () => {
     name: "Bob Kelzo",
     occupattion: "doctor",
     personality: "bossy",
+    extend_perso: "",
+    img: "",
   };
 
   const mockScrubPartial: Partial<Scrub> = { id: 1, name: "Test ok" };
@@ -64,8 +70,22 @@ describe("Given the scrubsReducer", () => {
 
   const mockState: State = {
     scrubs: [
-      { id: 1, name: "Test", occupattion: "testing", personality: "tester" },
-      { id: 2, name: "Test2", occupattion: "testing2", personality: "tester2" },
+      {
+        id: 1,
+        name: "Test",
+        occupattion: "testing",
+        personality: "tester",
+        extend_perso: "",
+        img: "",
+      },
+      {
+        id: 2,
+        name: "Test2",
+        occupattion: "testing2",
+        personality: "tester2",
+        extend_perso: "",
+        img: "",
+      },
     ],
     actualScrub: {} as Scrub,
   };
