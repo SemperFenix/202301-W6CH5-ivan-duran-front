@@ -37,6 +37,7 @@ const mockStore = configureStore({
 describe("Given the details component", () => {
   describe("When it is called", () => {
     test("Then it should the component card details", async () => {
+      // eslint-disable-next-line testing-library/no-unnecessary-act
       await act(async () => {
         render(
           <Provider store={mockStore}>
