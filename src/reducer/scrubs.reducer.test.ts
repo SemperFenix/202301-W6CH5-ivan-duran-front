@@ -57,6 +57,11 @@ describe("Given the scrubsReducer", () => {
     payload: mockScrub,
   };
 
+  const mockDefault = {
+    type: "hola",
+    payload: mockScrub,
+  };
+
   const mockState: State = {
     scrubs: [
       { id: 1, name: "Test", occupattion: "testing", personality: "tester" },
@@ -152,6 +157,13 @@ describe("Given the scrubsReducer", () => {
         ...mockState,
         actualScrub: mockAddActual.payload,
       });
+    });
+  });
+
+  describe("When passing none of the accepted actions", () => {
+    test("Then it should return the initial state", () => {
+      const scrubs = scrubsReducer(mockState, mockDefault);
+      expect(scrubs).toEqual(mockState);
     });
   });
 });
