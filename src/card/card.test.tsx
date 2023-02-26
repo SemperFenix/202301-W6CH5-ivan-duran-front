@@ -1,13 +1,10 @@
 /* eslint-disable testing-library/no-unnecessary-act */
 import { configureStore } from "@reduxjs/toolkit";
 import { act, fireEvent, render, screen } from "@testing-library/react";
-import { userEvent } from "@testing-library/user-event/dist/types/setup";
 import { Provider } from "react-redux";
 import { MemoryRouter } from "react-router-dom";
-import { useScrubs } from "../hooks/use.scrubs";
 import { Scrub } from "../models/scrub.model";
 import { scrubsReducer } from "../reducer/scrubs.reducer";
-import { ScrubsRepo } from "../services/repository/scrubs.repo";
 import { Card } from "./card";
 
 describe("Given the details component", () => {
