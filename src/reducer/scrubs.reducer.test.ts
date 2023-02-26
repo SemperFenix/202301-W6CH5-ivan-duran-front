@@ -60,6 +60,7 @@ describe("Given the scrubsReducer", () => {
   const mockState: State = {
     scrubs: [
       { id: 1, name: "Test", occupattion: "testing", personality: "tester" },
+      { id: 2, name: "Test2", occupattion: "testing2", personality: "tester2" },
     ],
     actualScrub: {} as Scrub,
   };
@@ -106,6 +107,12 @@ describe("Given the scrubsReducer", () => {
             occupattion: "testing",
             personality: "tester",
           },
+          {
+            id: 2,
+            name: "Test2",
+            occupattion: "testing2",
+            personality: "tester2",
+          },
         ],
       });
     });
@@ -126,7 +133,14 @@ describe("Given the scrubsReducer", () => {
       const scrubs = scrubsReducer(mockState, mockDelete);
       expect(scrubs).toEqual({
         ...mockState,
-        scrubs: [],
+        scrubs: [
+          {
+            id: 2,
+            name: "Test2",
+            occupattion: "testing2",
+            personality: "tester2",
+          },
+        ],
       });
     });
   });
