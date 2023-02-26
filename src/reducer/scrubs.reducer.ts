@@ -2,7 +2,7 @@ import { createReducer } from "@reduxjs/toolkit";
 import { Scrub } from "../models/scrub.model";
 import * as ac from "./scrubs.actions.creator";
 
-type State = {
+export type State = {
   scrubs: Scrub[];
   actualScrub: Scrub;
 };
@@ -22,8 +22,9 @@ export const scrubsReducer = createReducer(initialState, (builder) => {
   });
 
   builder.addCase(ac.updateCreator, (state, { payload }) => {
-    const data = state.scrubs.map((item) =>
-      item.id === payload.id ? Object.assign(item, payload) : item
+    const info = [...state.scrubs];
+    const data = info.map((item) =>
+      item.id === payload.id ? { ...item, ...payload } : item
     );
     return { ...state, scrubs: data };
   });
