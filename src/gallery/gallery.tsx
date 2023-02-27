@@ -8,8 +8,7 @@ import "./gallery.css";
 export function Gallery() {
   const repo = useMemo(() => new ScrubsRepo(), []);
 
-  const { scrubs, addActualScrub, deleteScrub } = useScrubs(repo);
-  console.log(scrubs);
+  const { scrubs, addActualScrub } = useScrubs(repo);
   return (
     <>
       <h1>Gallery</h1>
@@ -18,7 +17,6 @@ export function Gallery() {
           <Card
             info={item}
             addActual={addActualScrub}
-            deleteScrub={deleteScrub}
             status={scrubs.actualScrub}
             key={item.id}
           ></Card>
