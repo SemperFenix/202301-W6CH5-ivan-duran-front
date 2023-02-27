@@ -8,6 +8,7 @@ import { Card } from "./card";
 
 describe("Given the details component", () => {
   const addActualScrub = jest.fn();
+  const deleteScrub = jest.fn();
 
   beforeEach(async () => {
     await act(async () => {
@@ -18,6 +19,7 @@ describe("Given the details component", () => {
             <Card
               info={mockStore.getState().scrubs.scrubs[0]}
               addActual={addActualScrub}
+              deleteScrub={deleteScrub}
               status={mockScrub}
               key="1"
             ></Card>
