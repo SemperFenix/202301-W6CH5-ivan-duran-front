@@ -6,3 +6,7 @@ export type Scrub = {
   personality: string;
   extendPerso: string;
 };
+
+export type ServerResp = {
+  results: Scrub[];
+};
