@@ -8,6 +8,7 @@ import { Card } from "./card";
 
 describe("Given the details component", () => {
   const addActualScrub = jest.fn();
+  const deleteScrub = jest.fn();
 
   beforeEach(async () => {
     await act(async () => {
@@ -18,6 +19,7 @@ describe("Given the details component", () => {
             <Card
               info={mockStore.getState().scrubs.scrubs[0]}
               addActual={addActualScrub}
+              deleteScrub={deleteScrub}
               status={mockScrub}
               key="1"
             ></Card>
@@ -39,6 +41,13 @@ describe("Given the details component", () => {
       const element = await screen.findAllByRole("img");
       fireEvent.click(element[0]);
       expect(addActualScrub).toHaveBeenCalled();
+    });
+  });
+  describe("When delete button is clicked", () => {
+    test("Then it should call the deleteScrub function", async () => {
+      const element = await screen.findAllByTestId("delete-button");
+      fireEvent.click(element[0]);
+      expect(deleteScrub).toHaveBeenCalled();
     });
   });
 });
