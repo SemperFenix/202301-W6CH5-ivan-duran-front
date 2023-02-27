@@ -3,6 +3,8 @@ import { useScrubs } from "../hooks/use.scrubs";
 import { Scrub } from "../models/scrub.model";
 import { ScrubsRepo } from "../services/repository/scrubs.repo";
 
+import "./new.scrub.css";
+
 export function NewScrub() {
   const repo = useMemo(() => new ScrubsRepo(), []);
 
@@ -27,12 +29,32 @@ export function NewScrub() {
 
   return (
     <>
-      <form data-testid="form" onSubmit={handleSubmit}>
-        <input type="text" placeholder="Scrub name" />
-        <input type="text" placeholder="Scrub image link" />
-        <input type="text" placeholder="Scrub occupattion" />
-        <input type="text" placeholder="Scrub personality (one word)" />
-        <input type="text" placeholder="Scrub extended personality" />
+      <form className="add-scrub" data-testid="form" onSubmit={handleSubmit}>
+        <input
+          className="add-scrub_input"
+          type="text"
+          placeholder="Scrub name"
+        />
+        <input
+          className="add-scrub_input"
+          type="text"
+          placeholder="Scrub image link"
+        />
+        <input
+          className="add-scrub_input"
+          type="text"
+          placeholder="Scrub occupattion"
+        />
+        <input
+          className="add-scrub_input"
+          type="text"
+          placeholder="Scrub personality (one word)"
+        />
+        <input
+          className="add-scrub_input"
+          type="text"
+          placeholder="Scrub extended personality"
+        />
         <button>Send!</button>
       </form>
     </>
