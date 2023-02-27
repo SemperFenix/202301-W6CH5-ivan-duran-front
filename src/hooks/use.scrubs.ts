@@ -25,7 +25,7 @@ export function useScrubs(repo: ScrubsRepo) {
   const readScrub = async (id: number) => {
     try {
       const data = await repo.readOne(id);
-      dispatch(ac.readOneCreator(data.results[0]));
+      dispatch(ac.readOneCreator(data.results));
     } catch (error) {
       console.error((error as Error).message);
     }
@@ -54,16 +54,12 @@ export function useScrubs(repo: ScrubsRepo) {
       await repo.delete(id);
       dispatch(ac.deleteCreator(id));
     } catch (error) {
-      console.log((error as Error).message);
+      console.error((error as Error).message);
     }
   };
 
   const addActualScrub = (info: Scrub) => {
-    try {
-      dispatch(ac.addActualCreator(info));
-    } catch (error) {
-      console.log((error as Error).message);
-    }
+    dispatch(ac.addActualCreator(info));
   };
 
   return {
