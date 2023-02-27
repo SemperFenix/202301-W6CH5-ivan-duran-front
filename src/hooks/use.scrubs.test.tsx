@@ -1,8 +1,12 @@
-import { configureStore } from "@reduxjs/toolkit";
 import { act, fireEvent, render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
-import { Scrub } from "../models/scrub.model";
-import { scrubsReducer } from "../reducer/scrubs.reducer";
+import {
+  mockScrub,
+  mockScrubPartial,
+  mockScrubs,
+  mockStore,
+} from "../mocks/test.mocks";
+
 import { ScrubsRepo } from "../services/repository/scrubs.repo";
 import { useScrubs } from "./use.scrubs";
 
@@ -11,63 +15,6 @@ describe("Given the useCharacters hook", () => {
   let mockRepo: ScrubsRepo;
   let mockErrorRepo: ScrubsRepo;
   const spyOn = jest.spyOn(console, "error");
-
-  const mockScrubs: Scrub[] = [
-    {
-      id: 1,
-      name: "John D. Dorian",
-      occupattion: "doctor",
-      personality: "hugger",
-      extend_perso: "",
-      img: "",
-    },
-    {
-      id: 2,
-      name: "Percyval U. Cox",
-      occupattion: "doctor",
-      personality: "absolute truth",
-      extend_perso: "",
-      img: "",
-    },
-  ];
-
-  const mockScrub: Scrub = {
-    id: 5,
-    name: "Bob Kelzo",
-    occupattion: "doctor",
-    personality: "bossy",
-    extend_perso: "",
-    img: "",
-  };
-
-  const mockScrubPartial: Partial<Scrub> = { id: 1, name: "Test ok" };
-
-  const mockStore = configureStore({
-    reducer: { scrubs: scrubsReducer },
-    preloadedState: {
-      scrubs: {
-        scrubs: [
-          {
-            id: 1,
-            name: "Test",
-            occupattion: "testing",
-            personality: "tester",
-            extend_perso: "",
-            img: "",
-          },
-          {
-            id: 2,
-            name: "Test2",
-            occupattion: "testing2",
-            personality: "tester2",
-            extend_perso: "",
-            img: "",
-          },
-        ],
-        actualScrub: {} as Scrub,
-      },
-    },
-  });
 
   beforeEach(async () => {
     mockRepo = {
@@ -190,7 +137,7 @@ describe("Given the useCharacters hook", () => {
       await act(async () => {
         expect(mockRepo.readOne).toHaveBeenCalled();
       });
-      const data = await mockStore.getState();
+      const data = mockStore.getState();
       expect(data.scrubs.scrubs).toEqual([mockScrub]);
     });
   });

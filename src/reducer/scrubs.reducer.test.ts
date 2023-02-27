@@ -1,38 +1,9 @@
+import { mockScrub, mockScrubPartial, mockScrubs } from "../mocks/test.mocks";
 import { Scrub } from "../models/scrub.model";
 import { scrubsActions } from "./scrubs.actions";
 import { scrubsReducer, State } from "./scrubs.reducer";
 
 describe("Given the scrubsReducer", () => {
-  const mockScrubs: Scrub[] = [
-    {
-      id: 1,
-      name: "John D. Dorian",
-      occupattion: "doctor",
-      personality: "hugger",
-      extend_perso: "",
-      img: "",
-    },
-    {
-      id: 2,
-      name: "Percyval U. Cox",
-      occupattion: "doctor",
-      personality: "absolute truth",
-      extend_perso: "",
-      img: "",
-    },
-  ];
-
-  const mockScrub: Scrub = {
-    id: 5,
-    name: "Bob Kelzo",
-    occupattion: "doctor",
-    personality: "bossy",
-    extend_perso: "",
-    img: "",
-  };
-
-  const mockScrubPartial: Partial<Scrub> = { id: 1, name: "Test ok" };
-
   const mockReadAll = {
     type: scrubsActions.readAll,
     payload: mockScrubs,
