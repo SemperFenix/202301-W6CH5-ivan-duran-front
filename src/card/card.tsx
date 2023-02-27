@@ -22,6 +22,7 @@ export function Card({ info, addActual, status }: CardData) {
           <p>Name: {info.name}</p>
           <p>Occupation: {info.occupattion}</p>
           <p>Personality: {info.personality}</p>
+          <i className="fa-solid fa-trash-can"></i>
         </div>
       </Link>
     </>
