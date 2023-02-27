@@ -19,7 +19,7 @@ export function NewScrub() {
       img: (formNewScrub[1] as HTMLInputElement).value,
       occupattion: (formNewScrub[2] as HTMLInputElement).value,
       personality: (formNewScrub[3] as HTMLInputElement).value,
-      extend_perso: (formNewScrub[4] as HTMLInputElement).value,
+      extendPerso: (formNewScrub[4] as HTMLInputElement).value,
     };
     createScrub(newScrub);
     formNewScrub.reset();
