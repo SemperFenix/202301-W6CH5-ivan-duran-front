@@ -5,12 +5,19 @@ import { Scrub } from "../models/scrub.model";
 interface CardData {
   info: Scrub;
   addActual: (info: Scrub) => void;
+  deleteScrub: (info: Scrub["id"]) => void;
   status: Scrub;
 }
 
-export function Card({ info, addActual, status }: CardData) {
+export function Card({ info, addActual, deleteScrub, status }: CardData) {
   const handleClick = (ev: SyntheticEvent) => {
     addActual({ ...info });
+  };
+
+  const handleDelete = (ev: SyntheticEvent) => {
+    ev.stopPropagation();
+    console.log(info.id);
+    deleteScrub(info.id);
   };
 
   return (
@@ -22,6 +29,9 @@ export function Card({ info, addActual, status }: CardData) {
           <p>Name: {info.name}</p>
           <p>Occupation: {info.occupattion}</p>
           <p>Personality: {info.personality}</p>
+          <Link to={"/gallery"}>
+            <i className="fa-solid fa-trash-can" onClick={handleDelete}></i>
+          </Link>
         </div>
       </Link>
     </>
