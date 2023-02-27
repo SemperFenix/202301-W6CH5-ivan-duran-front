@@ -46,7 +46,7 @@ describe("Given the scrubsReducer", () => {
         name: "Test",
         occupattion: "testing",
         personality: "tester",
-        extend_perso: "",
+        extendPerso: "",
         img: "",
       },
       {
@@ -54,7 +54,7 @@ describe("Given the scrubsReducer", () => {
         name: "Test2",
         occupattion: "testing2",
         personality: "tester2",
-        extend_perso: "",
+        extendPerso: "",
         img: "",
       },
     ],

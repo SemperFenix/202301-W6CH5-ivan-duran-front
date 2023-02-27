@@ -11,7 +11,7 @@ export function DetailsCard({ info }: DetailsCardProps) {
         <img src={info.img} width="450" alt={info.name} />
         <p>Name: {info.name}</p>
         <p>Occupation: {info.occupattion}</p>
-        <p>Personality: {info.extend_perso}</p>
+        <p>Personality: {info.extendPerso}</p>
       </div>
     </>
   );

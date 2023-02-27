@@ -9,7 +9,7 @@ export const mockScrubs: Scrub[] = [
     name: "John D. Dorian",
     occupattion: "doctor",
     personality: "hugger",
-    extend_perso: "",
+    extendPerso: "",
     img: "",
   },
   {
@@ -17,7 +17,7 @@ export const mockScrubs: Scrub[] = [
     name: "Percyval U. Cox",
     occupattion: "doctor",
     personality: "absolute truth",
-    extend_perso: "",
+    extendPerso: "",
     img: "",
   },
 ];
@@ -27,7 +27,7 @@ export const mockScrub: Scrub = {
   name: "Bob Kelzo",
   occupattion: "doctor",
   personality: "bossy",
-  extend_perso: "",
+  extendPerso: "",
   img: "",
 };
 
@@ -43,7 +43,7 @@ export const mockStore = configureStore({
           name: "Test",
           occupattion: "testing",
           personality: "tester",
-          extend_perso: "",
+          extendPerso: "",
           img: "",
         },
         {
@@ -51,7 +51,7 @@ export const mockStore = configureStore({
           name: "Test2",
           occupattion: "testing2",
           personality: "tester2",
-          extend_perso: "",
+          extendPerso: "",
           img: "",
         },
       ],
