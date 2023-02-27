@@ -13,8 +13,6 @@ export function Card({ info, addActual, status }: CardData) {
     addActual({ ...info });
   };
 
-  console.log(info.img);
-
   return (
     // Commented code for future use
     <>
