@@ -43,4 +43,11 @@ describe("Given the details component", () => {
       expect(addActualScrub).toHaveBeenCalled();
     });
   });
+  describe("When delete button is clicked", () => {
+    test("Then it should call the deleteScrub function", async () => {
+      const element = await screen.findAllByTestId("delete-button");
+      fireEvent.click(element[0]);
+      expect(deleteScrub).toHaveBeenCalled();
+    });
+  });
 });

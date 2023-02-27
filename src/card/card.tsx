@@ -30,7 +30,11 @@ export function Card({ info, addActual, deleteScrub, status }: CardData) {
           <p>Occupation: {info.occupattion}</p>
           <p>Personality: {info.personality}</p>
           <Link to={"/gallery"}>
-            <i className="fa-solid fa-trash-can" onClick={handleDelete}></i>
+            <i
+              data-testid="delete-button"
+              className="fa-solid fa-trash-can"
+              onClick={handleDelete}
+            ></i>
           </Link>
         </div>
       </Link>
