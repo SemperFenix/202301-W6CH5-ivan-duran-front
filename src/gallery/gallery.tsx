@@ -9,7 +9,6 @@ export function Gallery() {
   const repo = useMemo(() => new ScrubsRepo(), []);
 
   const { scrubs, addActualScrub } = useScrubs(repo);
-  console.log(scrubs);
   return (
     <>
       <h1>Gallery</h1>

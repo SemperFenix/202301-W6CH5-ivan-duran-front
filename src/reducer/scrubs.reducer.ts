@@ -18,7 +18,7 @@ export const scrubsReducer = createReducer(initialState, (builder) => {
   });
 
   builder.addCase(ac.readOneCreator, (state, { payload }) => {
-    return { ...state, scrubs: [payload] };
+    return { ...state, scrubs: payload };
   });
 
   builder.addCase(ac.updateCreator, (state, { payload }) => {

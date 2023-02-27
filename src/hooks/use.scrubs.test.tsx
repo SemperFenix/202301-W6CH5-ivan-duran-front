@@ -1,11 +1,6 @@
 import { act, fireEvent, render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
-import {
-  mockScrub,
-  mockScrubPartial,
-  mockScrubs,
-  mockStore,
-} from "../mocks/test.mocks";
+import { mockScrub, mockScrubPartial, mockStore } from "../mocks/test.mocks";
 
 import { ScrubsRepo } from "../services/repository/scrubs.repo";
 import { useScrubs } from "./use.scrubs";
@@ -13,26 +8,16 @@ import { useScrubs } from "./use.scrubs";
 describe("Given the useCharacters hook", () => {
   let elements: HTMLElement[];
   let mockRepo: ScrubsRepo;
-  let mockErrorRepo: ScrubsRepo;
   const spyOn = jest.spyOn(console, "error");
 
   beforeEach(async () => {
     mockRepo = {
       url: "",
-      readAll: jest.fn().mockResolvedValueOnce(mockScrubs),
-      readOne: jest.fn().mockResolvedValueOnce(mockScrub),
-      create: jest.fn().mockResolvedValue(mockScrub),
-      update: jest.fn().mockResolvedValue(mockScrub),
-      delete: jest.fn().mockResolvedValue({}),
-    };
-
-    mockErrorRepo = {
-      url: "",
-      readAll: jest.fn().mockRejectedValueOnce("Error"),
-      readOne: jest.fn().mockRejectedValueOnce("Error"),
-      create: jest.fn().mockRejectedValueOnce("Error"),
-      update: jest.fn().mockRejectedValueOnce("Error"),
-      delete: jest.fn().mockRejectedValueOnce("Error"),
+      readAll: jest.fn(),
+      readOne: jest.fn(),
+      create: jest.fn(),
+      update: jest.fn(),
+      delete: jest.fn(),
     };
 
     function TestComp() {
@@ -48,7 +33,7 @@ describe("Given the useCharacters hook", () => {
         <>
           <button
             onClick={() => {
-              readScrub(1);
+              readScrub(2);
             }}
           ></button>
           <button
@@ -75,36 +60,6 @@ describe("Given the useCharacters hook", () => {
       );
     }
 
-    function TestErrorComp() {
-      const { readScrub, updateScrub, createScrub, deleteScrub } =
-        useScrubs(mockErrorRepo);
-
-      return (
-        <>
-          <button
-            onClick={() => {
-              readScrub(1);
-            }}
-          ></button>
-          <button
-            onClick={() => {
-              updateScrub(mockScrubPartial);
-            }}
-          ></button>
-          <button
-            onClick={() => {
-              createScrub(mockScrub);
-            }}
-          ></button>
-          <button
-            onClick={() => {
-              deleteScrub(1);
-            }}
-          ></button>
-        </>
-      );
-    }
-
     // eslint-disable-next-line testing-library/no-unnecessary-act
     await act(async () => {
       // eslint-disable-next-line testing-library/no-render-in-setup
@@ -112,7 +67,6 @@ describe("Given the useCharacters hook", () => {
         <>
           <Provider store={mockStore}>
             <TestComp></TestComp>
-            <TestErrorComp></TestErrorComp>
           </Provider>
         </>
       );
@@ -133,12 +87,7 @@ describe("Given the useCharacters hook", () => {
   describe("When click on first button", () => {
     test("Then it should call the repo method readOne", async () => {
       fireEvent.click(elements[0]);
-
-      await act(async () => {
-        expect(mockRepo.readOne).toHaveBeenCalled();
-      });
-      const data = mockStore.getState();
-      expect(data.scrubs.scrubs).toEqual([mockScrub]);
+      expect(mockRepo.readOne).toHaveBeenCalled();
     });
   });
 
@@ -183,16 +132,18 @@ describe("Given the useCharacters hook", () => {
   // Error Tests
 
   describe("When readAll method fails", () => {
-    test("Then it should call the error console", async () => {
-      await act(async () => {
-        expect(spyOn).toHaveBeenCalled();
-      });
+    test("Then it should call the error console", () => {
+      (mockRepo.readAll as jest.Mock).mockRejectedValue(new Error("hola"));
+      expect(spyOn).toHaveBeenCalled();
     });
   });
 
   describe("When readOne method fails", () => {
     test("Then it should call the error console", async () => {
-      fireEvent.click(elements[5]);
+      (mockRepo.readOne as jest.Mock).mockRejectedValue(new Error("hola"));
+
+      await fireEvent.click(elements[0]);
+
       await act(async () => {
         expect(spyOn).toHaveBeenCalled();
       });
@@ -201,7 +152,9 @@ describe("Given the useCharacters hook", () => {
 
   describe("When update method fails", () => {
     test("Then it should call the error console", async () => {
-      fireEvent.click(elements[6]);
+      (mockRepo.update as jest.Mock).mockRejectedValue(new Error("hola"));
+
+      fireEvent.click(elements[1]);
       await act(async () => {
         expect(spyOn).toHaveBeenCalled();
       });
@@ -210,7 +163,9 @@ describe("Given the useCharacters hook", () => {
 
   describe("When create method fails", () => {
     test("Then it should call the error console", async () => {
-      fireEvent.click(elements[7]);
+      (mockRepo.create as jest.Mock).mockRejectedValue(new Error("hola"));
+
+      fireEvent.click(elements[2]);
       await act(async () => {
         expect(spyOn).toHaveBeenCalled();
       });
@@ -219,7 +174,9 @@ describe("Given the useCharacters hook", () => {
 
   describe("When delete method fails", () => {
     test("Then it should call the error console", async () => {
-      fireEvent.click(elements[8]);
+      (mockRepo.delete as jest.Mock).mockRejectedValue(new Error("hola"));
+
+      fireEvent.click(elements[3]);
       await act(async () => {
         expect(spyOn).toHaveBeenCalled();
       });

@@ -46,7 +46,7 @@ describe("Given the scrubsReducer", () => {
         name: "Test",
         occupattion: "testing",
         personality: "tester",
-        extend_perso: "",
+        extendPerso: "",
         img: "",
       },
       {
@@ -54,7 +54,7 @@ describe("Given the scrubsReducer", () => {
         name: "Test2",
         occupattion: "testing2",
         personality: "tester2",
-        extend_perso: "",
+        extendPerso: "",
         img: "",
       },
     ],
@@ -74,7 +74,7 @@ describe("Given the scrubsReducer", () => {
   describe("When passing a readOne action", () => {
     test("Then it should return the state with the scrubs with one value", () => {
       const scrubs = scrubsReducer(mockState, mockReadOne);
-      expect(scrubs).toEqual({ ...mockState, scrubs: [mockReadOne.payload] });
+      expect(scrubs).toEqual({ ...mockState, scrubs: mockReadOne.payload });
     });
   });
 
@@ -89,7 +89,7 @@ describe("Given the scrubsReducer", () => {
             name: "Test ok",
             occupattion: "testing",
             personality: "tester",
-            extend_perso: "",
+            extendPerso: "",
             img: "",
           },
           {
@@ -97,7 +97,7 @@ describe("Given the scrubsReducer", () => {
             name: "Test2",
             occupattion: "testing2",
             personality: "tester2",
-            extend_perso: "",
+            extendPerso: "",
             img: "",
           },
         ],
@@ -126,7 +126,7 @@ describe("Given the scrubsReducer", () => {
             name: "Test2",
             occupattion: "testing2",
             personality: "tester2",
-            extend_perso: "",
+            extendPerso: "",
             img: "",
           },
         ],
