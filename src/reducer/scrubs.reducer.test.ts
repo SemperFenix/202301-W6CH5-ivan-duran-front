@@ -74,7 +74,7 @@ describe("Given the scrubsReducer", () => {
   describe("When passing a readOne action", () => {
     test("Then it should return the state with the scrubs with one value", () => {
       const scrubs = scrubsReducer(mockState, mockReadOne);
-      expect(scrubs).toEqual({ ...mockState, scrubs: [mockReadOne.payload] });
+      expect(scrubs).toEqual({ ...mockState, scrubs: mockReadOne.payload });
     });
   });
 
