@@ -19,7 +19,7 @@ export function Card({ info, addActual, status }: CardData) {
     // Commented code for future use
     <>
       <Link to={"/details"}>
-        <div onClick={handleClick}>
+        <div className="characters__item" onClick={handleClick}>
           <img src={info.img} width="250" alt={info.name} />
           <p>Name: {info.name}</p>
           <p>Occupation: {info.occupattion}</p>
