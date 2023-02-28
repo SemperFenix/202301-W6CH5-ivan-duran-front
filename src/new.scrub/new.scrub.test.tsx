@@ -5,7 +5,6 @@ import { mockStore } from "../mocks/test.mocks";
 import { NewScrub } from "./new.scrub";
 
 // Comentado porque no consigo que funcione correctamente
-
 // const mockCreateFn = jest.fn();
 // jest.mock("../hooks/use.scrubs.ts", () => {
 //   return jest.fn(() => ({
@@ -31,7 +30,6 @@ describe("Given the New Item component", () => {
 
       // Esta parte del test no he conseguido que funcione
       // expect(mockCreateFn).toHaveBeenCalled();
-
       // element[0] = "Test";
       // element[1] = "Test";
       // element[2] = "Test";
