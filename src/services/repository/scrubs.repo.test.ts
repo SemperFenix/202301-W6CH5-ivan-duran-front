@@ -30,8 +30,8 @@ describe("Given the scrubs repo", () => {
           .mockResolvedValue({ id: 2, test: "test2" } as unknown as Scrub),
       });
 
-      const readOne = await repo.readOne(2);
-      expect(readOne).toEqual({ id: 2, test: "test2" });
+      const readOne = await repo.readOne("2");
+      expect(readOne).toEqual({ id: "2", test: "test2" });
     });
   });
 
@@ -41,13 +41,13 @@ describe("Given the scrubs repo", () => {
         ok: true,
         json: jest
           .fn()
-          .mockResolvedValue({ id: 2, test: "test3" } as unknown as Scrub),
+          .mockResolvedValue({ id: "2", test: "test3" } as unknown as Scrub),
       });
 
       const update = await repo.update({
         test: "test3",
       } as unknown as Partial<Scrub>);
-      expect(update).toEqual({ id: 2, test: "test3" });
+      expect(update).toEqual({ id: "2", test: "test3" });
     });
   });
 
@@ -57,13 +57,13 @@ describe("Given the scrubs repo", () => {
         ok: true,
         json: jest
           .fn()
-          .mockResolvedValue({ id: 3, test: "test4" } as unknown as Scrub),
+          .mockResolvedValue({ id: "3", test: "test4" } as unknown as Scrub),
       });
 
       const create = await repo.create({
         test: "test4",
       } as unknown as Scrub);
-      expect(create).toEqual({ id: 3, test: "test4" });
+      expect(create).toEqual({ id: "3", test: "test4" });
     });
   });
 
@@ -74,7 +74,7 @@ describe("Given the scrubs repo", () => {
         json: jest.fn(),
       });
 
-      const delet = await repo.delete(2);
+      const delet = await repo.delete("2");
       expect(fetch).toHaveBeenCalled();
       expect(delet).toBe(undefined);
     });
@@ -93,7 +93,7 @@ describe("Given the scrubs repo", () => {
   describe("When readOne method fails to fetch", () => {
     test("Then it should throw an error", async () => {
       global.fetch = jest.fn().mockResolvedValue("Error");
-      const readOne = repo.readOne(1);
+      const readOne = repo.readOne("1");
       await expect(readOne).rejects.toThrow();
     });
   });
@@ -119,7 +119,7 @@ describe("Given the scrubs repo", () => {
   describe("When delete method fails to fetch", () => {
     test("Then it should throw an error", async () => {
       global.fetch = jest.fn().mockResolvedValue("Error");
-      const delet = repo.delete(1);
+      const delet = repo.delete("1");
       await expect(delet).rejects.toThrow();
     });
   });

@@ -20,7 +20,7 @@ export function Gallery() {
             addActual={addActualScrub}
             deleteScrub={deleteScrub}
             status={scrubs.actualScrub}
-            key={item.id}
+            key={item._id}
           ></Card>
         ))}
       </div>

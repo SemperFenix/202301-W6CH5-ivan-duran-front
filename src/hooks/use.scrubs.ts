@@ -22,7 +22,7 @@ export function useScrubs(repo: ScrubsRepo) {
     readAllScrubs();
   }, [dispatch, repo]);
 
-  const readScrub = async (id: number) => {
+  const readScrub = async (id: string) => {
     try {
       const data = await repo.readOne(id);
       dispatch(ac.readOneCreator(data.results));
@@ -31,7 +31,7 @@ export function useScrubs(repo: ScrubsRepo) {
     }
   };
 
-  const createScrub = async (info: Scrub) => {
+  const createScrub = async (info: Partial<Scrub>) => {
     try {
       const data = await repo.create(info);
       dispatch(ac.createCreator(data.results[0]));
@@ -49,7 +49,7 @@ export function useScrubs(repo: ScrubsRepo) {
     }
   };
 
-  const deleteScrub = async (id: number) => {
+  const deleteScrub = async (id: string) => {
     try {
       await repo.delete(id);
       dispatch(ac.deleteCreator(id));

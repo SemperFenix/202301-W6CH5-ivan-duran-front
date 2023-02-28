@@ -8,15 +8,12 @@ import "./new.scrub.css";
 export function NewScrub() {
   const repo = useMemo(() => new ScrubsRepo(), []);
 
-  const { scrubs, createScrub } = useScrubs(repo);
+  const { createScrub } = useScrubs(repo);
 
   const handleSubmit = (ev: SyntheticEvent) => {
     ev.preventDefault();
     const formNewScrub = document.querySelector("form") as HTMLFormElement;
-    const newId = Math.max(...scrubs.scrubs.map((item) => item.id));
-
-    const newScrub: Scrub = {
-      id: newId + 1,
+    const newScrub: Partial<Scrub> = {
       name: (formNewScrub[0] as HTMLInputElement).value,
       img: (formNewScrub[1] as HTMLInputElement).value,
       occupattion: (formNewScrub[2] as HTMLInputElement).value,

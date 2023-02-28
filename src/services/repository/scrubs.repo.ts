@@ -14,7 +14,7 @@ export class ScrubsRepo implements Repo<ServerResp> {
     return scrubs;
   }
 
-  async readOne(id: number): Promise<ServerResp> {
+  async readOne(id: string): Promise<ServerResp> {
     const url = this.url + "/" + id;
     const resp = await fetch(url);
     if (!resp.ok)
@@ -26,7 +26,7 @@ export class ScrubsRepo implements Repo<ServerResp> {
   }
 
   async update(info: Partial<Scrub>): Promise<ServerResp> {
-    const url = this.url + "/" + info.id;
+    const url = this.url + "/" + info._id;
     const resp = await fetch(url, {
       method: "PATCH",
       body: JSON.stringify(info),
@@ -42,7 +42,7 @@ export class ScrubsRepo implements Repo<ServerResp> {
 
   // Create no tiene que recibir el ID como parámetro, puesto que lo va a asignar el server.
 
-  async create(info: Scrub): Promise<ServerResp> {
+  async create(info: Partial<Scrub>): Promise<ServerResp> {
     const resp = await fetch(this.url, {
       method: "POST",
       body: JSON.stringify(info),
@@ -57,7 +57,7 @@ export class ScrubsRepo implements Repo<ServerResp> {
     return data;
   }
 
-  async delete(id: number): Promise<void> {
+  async delete(id: string): Promise<void> {
     const url = this.url + "/" + id;
     const resp = await fetch(url, {
       method: "DELETE",

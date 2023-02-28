@@ -6,7 +6,7 @@ export const readAllCreator = createAction<Scrub[]>(scrubsActions.readAll);
 export const readOneCreator = createAction<Scrub[]>(scrubsActions.readOne);
 export const updateCreator = createAction<Partial<Scrub>>(scrubsActions.update);
 export const createCreator = createAction<Scrub>(scrubsActions.create);
-export const deleteCreator = createAction<Scrub["id"]>(scrubsActions.delete);
+export const deleteCreator = createAction<Scrub["_id"]>(scrubsActions.delete);
 export const addActualCreator = createAction<Scrub>(
   scrubsActions.addActualInfo
 );

@@ -33,7 +33,7 @@ describe("Given the useCharacters hook", () => {
         <>
           <button
             onClick={() => {
-              readScrub(2);
+              readScrub("2");
             }}
           ></button>
           <button
@@ -48,7 +48,7 @@ describe("Given the useCharacters hook", () => {
           ></button>
           <button
             onClick={() => {
-              deleteScrub(1);
+              deleteScrub("1");
             }}
           ></button>
           <button
