@@ -4,6 +4,14 @@ import { mockStore } from "../mocks/test.mocks";
 
 import { NewScrub } from "./new.scrub";
 
+// Comentado porque no consigo que funcione correctamente
+// const mockCreateFn = jest.fn();
+// jest.mock("../hooks/use.scrubs.ts", () => {
+//   return jest.fn(() => ({
+//     createScrub: mockCreateFn,
+//   }));
+// });
+
 describe("Given the New Item component", () => {
   beforeEach(() => {
     // eslint-disable-next-line testing-library/no-render-in-setup
@@ -21,6 +29,7 @@ describe("Given the New Item component", () => {
       expect(element).toBeInTheDocument();
 
       // Esta parte del test no he conseguido que funcione
+      // expect(mockCreateFn).toHaveBeenCalled();
       // element[0] = "Test";
       // element[1] = "Test";
       // element[2] = "Test";
