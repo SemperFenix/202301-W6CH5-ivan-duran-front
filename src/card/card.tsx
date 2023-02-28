@@ -23,21 +23,23 @@ export function Card({ info, addActual, deleteScrub, status }: CardData) {
   return (
     // Commented code for future use
     <>
-      <Link to={"/details"}>
-        <div className="characters__item" onClick={handleClick}>
-          <img src={info.img} width="250" alt={info.name} />
-          <p>Name: {info.name}</p>
-          <p>Occupation: {info.occupattion}</p>
-          <p>Personality: {info.personality}</p>
-          <Link to={"/gallery"}>
-            <i
-              data-testid="delete-button"
-              className="fa-solid fa-trash-can"
-              onClick={handleDelete}
-            ></i>
-          </Link>
-        </div>
-      </Link>
+      <div className="card">
+        <Link to={"/details"}>
+          <div className="characters__item" onClick={handleClick}>
+            <img src={info.img} width="250" alt={info.name} />
+            <p>Name: {info.name}</p>
+            <p>Occupation: {info.occupattion}</p>
+            <p>Personality: {info.personality}</p>
+          </div>
+        </Link>
+        <Link to={"/gallery"}>
+          <i
+            data-testid="delete-button"
+            className="fa-solid fa-trash-can"
+            onClick={handleDelete}
+          ></i>
+        </Link>
+      </div>
     </>
   );
 }

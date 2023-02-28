@@ -3,6 +3,12 @@ import { Provider } from "react-redux";
 import { mockStore } from "../mocks/test.mocks";
 
 import { NewScrub } from "./new.scrub";
+const mockCreateFn = jest.fn();
+jest.mock("../hooks/use.scrubs.ts", () => {
+  return jest.fn(() => ({
+    createScrub: mockCreateFn,
+  }));
+});
 
 describe("Given the New Item component", () => {
   beforeEach(() => {
@@ -19,6 +25,7 @@ describe("Given the New Item component", () => {
     test("Then it should call the create new Photo method", () => {
       const element = screen.getByTestId("form");
       expect(element).toBeInTheDocument();
+      expect(mockCreateFn).toHaveBeenCalled();
 
       // Esta parte del test no he conseguido que funcione
       // element[0] = "Test";
