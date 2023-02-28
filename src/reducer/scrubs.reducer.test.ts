@@ -26,7 +26,7 @@ describe("Given the scrubsReducer", () => {
 
   const mockDelete = {
     type: scrubsActions.delete,
-    payload: 1,
+    payload: "1",
   };
 
   const mockAddActual = {
@@ -42,7 +42,7 @@ describe("Given the scrubsReducer", () => {
   const mockState: State = {
     scrubs: [
       {
-        id: 1,
+        _id: "1",
         name: "Test",
         occupattion: "testing",
         personality: "tester",
@@ -50,7 +50,7 @@ describe("Given the scrubsReducer", () => {
         img: "",
       },
       {
-        id: 2,
+        _id: "2",
         name: "Test2",
         occupattion: "testing2",
         personality: "tester2",
@@ -85,7 +85,7 @@ describe("Given the scrubsReducer", () => {
         ...mockState,
         scrubs: [
           {
-            id: 1,
+            id: "1",
             name: "Test ok",
             occupattion: "testing",
             personality: "tester",
@@ -93,7 +93,7 @@ describe("Given the scrubsReducer", () => {
             img: "",
           },
           {
-            id: 2,
+            id: "2",
             name: "Test2",
             occupattion: "testing2",
             personality: "tester2",

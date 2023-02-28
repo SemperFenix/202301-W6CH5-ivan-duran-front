@@ -24,7 +24,7 @@ export const scrubsReducer = createReducer(initialState, (builder) => {
   builder.addCase(ac.updateCreator, (state, { payload }) => {
     const info = [...state.scrubs];
     const data = info.map((item) =>
-      item.id === payload.id ? { ...item, ...payload } : item
+      item._id === payload._id ? { ...item, ...payload } : item
     );
     return { ...state, scrubs: data };
   });
@@ -34,7 +34,7 @@ export const scrubsReducer = createReducer(initialState, (builder) => {
   });
 
   builder.addCase(ac.deleteCreator, (state, { payload }) => {
-    const data = state.scrubs.filter((item) => item.id !== payload);
+    const data = state.scrubs.filter((item) => item._id !== payload);
     return { ...state, scrubs: data };
   });
 

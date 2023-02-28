@@ -5,7 +5,7 @@ import { scrubsReducer } from "../reducer/scrubs.reducer";
 
 export const mockScrubs: Scrub[] = [
   {
-    id: 1,
+    _id: "1",
     name: "John D. Dorian",
     occupattion: "doctor",
     personality: "hugger",
@@ -13,7 +13,7 @@ export const mockScrubs: Scrub[] = [
     img: "",
   },
   {
-    id: 2,
+    _id: "2",
     name: "Percyval U. Cox",
     occupattion: "doctor",
     personality: "absolute truth",
@@ -23,7 +23,7 @@ export const mockScrubs: Scrub[] = [
 ];
 
 export const mockScrub: Scrub = {
-  id: 5,
+  _id: "5",
   name: "Bob Kelzo",
   occupattion: "doctor",
   personality: "bossy",
@@ -31,7 +31,7 @@ export const mockScrub: Scrub = {
   img: "",
 };
 
-export const mockScrubPartial: Partial<Scrub> = { id: 1, name: "Test ok" };
+export const mockScrubPartial: Partial<Scrub> = { _id: "1", name: "Test ok" };
 
 export const mockStore = configureStore({
   reducer: { scrubs: scrubsReducer },
@@ -39,7 +39,7 @@ export const mockStore = configureStore({
     scrubs: {
       scrubs: [
         {
-          id: 1,
+          _id: "1",
           name: "Test",
           occupattion: "testing",
           personality: "tester",
@@ -47,7 +47,7 @@ export const mockStore = configureStore({
           img: "",
         },
         {
-          id: 2,
+          _id: "2",
           name: "Test2",
           occupattion: "testing2",
           personality: "tester2",
