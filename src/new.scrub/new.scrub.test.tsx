@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
+import { MemoryRouter } from "react-router-dom";
 import { mockStore } from "../mocks/test.mocks";
 
 import { NewScrub } from "./new.scrub";
@@ -19,7 +20,9 @@ describe("Given the New Item component", () => {
     // eslint-disable-next-line testing-library/no-render-in-setup
     render(
       <Provider store={mockStore}>
-        <NewScrub />
+        <MemoryRouter>
+          <NewScrub />
+        </MemoryRouter>
       </Provider>
     );
   });
