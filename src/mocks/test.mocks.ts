@@ -55,7 +55,7 @@ export const mockStore = configureStore({
           img: "",
         },
       ],
-      actualScrub: {} as Scrub,
+      actualScrub: { _id: "1" } as Scrub,
     },
   },
 });
