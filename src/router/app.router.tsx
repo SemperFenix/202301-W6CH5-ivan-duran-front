@@ -14,7 +14,7 @@ export function AppRouter({ menuOptions }: AppRouterProps) {
       <Route path={"/"} element={<Home></Home>}></Route>
       <Route path={menuOptions[0].path} element={<Home></Home>}></Route>
       <Route path={menuOptions[1].path} element={<Gallery></Gallery>}></Route>
-      <Route path={menuOptions[2].path} element={<NewScrub></NewScrub>}></Route>
+      <Route path="/new-item/:id" element={<NewScrub></NewScrub>}></Route>
       <Route path={"/details"} element={<Details></Details>}></Route>
 
       {/* Código comentado para su futuro uso */}
