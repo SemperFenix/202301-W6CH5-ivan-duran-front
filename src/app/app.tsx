@@ -10,7 +10,7 @@ export type MenuOption = {
 const menuOptions: MenuOption[] = [
   { label: "Home", path: "/home" },
   { label: "Gallery", path: "/gallery" },
-  { label: "New sCRUB", path: "/new-item" },
+  { label: "New Scrub", path: "/new-item/add" },
   { label: "Favorites", path: "/favorites" },
 ];
 

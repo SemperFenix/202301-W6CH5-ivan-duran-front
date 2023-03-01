@@ -8,3 +8,11 @@
   justify-content: flex-start;
   align-items: flex-start;
 }
+
+.card__actions {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}

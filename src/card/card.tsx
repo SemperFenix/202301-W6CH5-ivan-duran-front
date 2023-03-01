@@ -2,6 +2,8 @@ import { SyntheticEvent } from "react";
 import { Link } from "react-router-dom";
 import { Scrub } from "../models/scrub.model";
 
+import "./card.css";
+
 interface CardData {
   info: Scrub;
   addActual: (info: Scrub) => void;
@@ -15,8 +17,6 @@ export function Card({ info, addActual, deleteScrub, status }: CardData) {
   };
 
   const handleDelete = (ev: SyntheticEvent) => {
-    console.log(info);
-    console.error(info._id);
     deleteScrub(info._id);
   };
 
@@ -32,13 +32,22 @@ export function Card({ info, addActual, deleteScrub, status }: CardData) {
           <p>Personality: {info.personality}</p>
         </div>
       </Link>
-      <Link to={"/gallery"}>
-        <i
-          data-testid="delete-button"
-          className="fa-solid fa-trash-can"
-          onClick={handleDelete}
-        ></i>
-      </Link>
+      <div className="card__actions">
+        <Link to={"/gallery"}>
+          <i
+            data-testid="delete-button"
+            className="fa-solid fa-trash-can"
+            onClick={handleDelete}
+          ></i>
+        </Link>
+        <Link to={"/new-item/edit"}>
+          <i
+            data-testid="edit-button"
+            className="fa-solid fa-pen-to-square"
+            onClick={handleClick}
+          ></i>
+        </Link>
+      </div>
     </div>
   );
 }
