@@ -12,6 +12,7 @@ export function NewScrub() {
   const { id } = useParams();
 
   const { scrubs, createScrub, updateScrub } = useScrubs(repo);
+  console.log(scrubs.actualScrub);
 
   const handleCreate = (ev: SyntheticEvent) => {
     ev.preventDefault();
@@ -31,12 +32,21 @@ export function NewScrub() {
   const handleUpdate = (ev: SyntheticEvent) => {
     ev.preventDefault();
     const formNewScrub = document.querySelector("form") as HTMLFormElement;
+    const name = (formNewScrub[0] as HTMLInputElement).value;
+    const img = (formNewScrub[1] as HTMLInputElement).value;
+    const occupattion = (formNewScrub[2] as HTMLInputElement).value;
+    const personality = (formNewScrub[3] as HTMLInputElement).value;
+    const extendPerso = (formNewScrub[4] as HTMLInputElement).value;
+
     const updatedScrub: Partial<Scrub> = {
-      name: (formNewScrub[0] as HTMLInputElement).value,
-      img: (formNewScrub[1] as HTMLInputElement).value,
-      occupattion: (formNewScrub[2] as HTMLInputElement).value,
-      personality: (formNewScrub[3] as HTMLInputElement).value,
-      extendPerso: (formNewScrub[4] as HTMLInputElement).value,
+      name: name === "" ? scrubs.actualScrub.name : name,
+      img: img === "" ? scrubs.actualScrub.img : img,
+      occupattion:
+        occupattion === "" ? scrubs.actualScrub.occupattion : occupattion,
+      personality:
+        personality === "" ? scrubs.actualScrub.personality : personality,
+      extendPerso:
+        extendPerso === "" ? scrubs.actualScrub.extendPerso : extendPerso,
     };
     updateScrub({ ...scrubs.actualScrub, ...updatedScrub });
     formNewScrub.reset();
