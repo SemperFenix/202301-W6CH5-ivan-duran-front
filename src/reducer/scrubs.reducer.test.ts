@@ -85,7 +85,7 @@ describe("Given the scrubsReducer", () => {
         ...mockState,
         scrubs: [
           {
-            id: "1",
+            _id: "1",
             name: "Test ok",
             occupattion: "testing",
             personality: "tester",
@@ -93,7 +93,7 @@ describe("Given the scrubsReducer", () => {
             img: "",
           },
           {
-            id: "2",
+            _id: "2",
             name: "Test2",
             occupattion: "testing2",
             personality: "tester2",
@@ -122,7 +122,7 @@ describe("Given the scrubsReducer", () => {
         ...mockState,
         scrubs: [
           {
-            id: 2,
+            _id: "2",
             name: "Test2",
             occupattion: "testing2",
             personality: "tester2",
