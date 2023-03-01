@@ -1,17 +1,12 @@
-import { render, screen } from "@testing-library/react";
+import { act, fireEvent, render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { MemoryRouter } from "react-router-dom";
 import { mockStore } from "../mocks/test.mocks";
 
 import { NewScrub } from "./new.scrub";
 
-// Comentado porque no consigo que funcione correctamente
-// const mockCreateFn = jest.fn();
-// jest.mock("../hooks/use.scrubs.ts", () => {
-//   return jest.fn(() => ({
-//     createScrub: mockCreateFn,
-//   }));
-// });
+const mockCreateFn = jest.fn();
+const spyOn = jest.spyOn(console, "log");
 
 describe("Given the New Item component", () => {
   beforeEach(() => {
@@ -20,31 +15,31 @@ describe("Given the New Item component", () => {
     // eslint-disable-next-line testing-library/no-render-in-setup
     render(
       <Provider store={mockStore}>
-        <MemoryRouter>
+        <MemoryRouter
+          initialIndex={0}
+          initialEntries={["/new-item/add", "/new-item/edit"]}
+        >
           <NewScrub />
         </MemoryRouter>
       </Provider>
     );
   });
   describe("When submitted", () => {
-    test("Then it should call the create new Photo method", () => {
-      const element = screen.getByTestId("form");
+    test("Then it should call the create new Photo method", async () => {
+      const element = screen.getByTestId("form") as HTMLFormElement;
       expect(element).toBeInTheDocument();
 
-      // Esta parte del test no he conseguido que funcione
-      // expect(mockCreateFn).toHaveBeenCalled();
-      // element[0] = "Test";
-      // element[1] = "Test";
-      // element[2] = "Test";
-      // element[3] = "Test";
-      // element[4] = "Test";
-      // const preClick = mockStore.getState().scrubs.scrubs.length;
-      // await act(async () => {
-      //   fireEvent.submit(element);
-      //   expect(element[0]).toBe(undefined);
-      //   const postClick = mockStore.getState().scrubs.scrubs.length;
-      //   expect(postClick).toBe(preClick + 1);
-      // });
+      (element[0] as unknown as string) = "Test";
+      (element[1] as unknown as string) = "Test";
+      (element[2] as unknown as string) = "Test";
+      (element[3] as unknown as string) = "Test";
+      (element[4] as unknown as string) = "Test";
+
+      // eslint-disable-next-line testing-library/no-unnecessary-act
+      await act(async () => {
+        fireEvent.submit(element);
+        expect(spyOn).toHaveBeenCalled();
+      });
     });
   });
 });

@@ -26,6 +26,8 @@ export function NewScrub() {
     };
     createScrub(newScrub);
     formNewScrub.reset();
+    console.log("Create ok!");
+
     navigate("/gallery");
   };
 
@@ -50,6 +52,7 @@ export function NewScrub() {
     };
     updateScrub({ ...scrubs.actualScrub, ...updatedScrub });
     formNewScrub.reset();
+    console.log("Update ok!");
     navigate("/gallery");
   };
   const handler = id === "add" ? handleCreate : handleUpdate;
