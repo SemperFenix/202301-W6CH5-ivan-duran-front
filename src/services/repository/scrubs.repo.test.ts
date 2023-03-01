@@ -27,11 +27,11 @@ describe("Given the scrubs repo", () => {
         ok: true,
         json: jest
           .fn()
-          .mockResolvedValue({ id: 2, test: "test2" } as unknown as Scrub),
+          .mockResolvedValue({ _id: "2", test: "test2" } as unknown as Scrub),
       });
 
       const readOne = await repo.readOne("2");
-      expect(readOne).toEqual({ id: "2", test: "test2" });
+      expect(readOne).toEqual({ _id: "2", test: "test2" });
     });
   });
 
@@ -41,13 +41,14 @@ describe("Given the scrubs repo", () => {
         ok: true,
         json: jest
           .fn()
-          .mockResolvedValue({ id: "2", test: "test3" } as unknown as Scrub),
+          .mockResolvedValue({ _id: "2", test: "test3" } as unknown as Scrub),
       });
 
       const update = await repo.update({
+        _id: "2",
         test: "test3",
       } as unknown as Partial<Scrub>);
-      expect(update).toEqual({ id: "2", test: "test3" });
+      expect(update).toEqual({ _id: "2", test: "test3" });
     });
   });
 
@@ -101,7 +102,20 @@ describe("Given the scrubs repo", () => {
   describe("When update method fails to fetch", () => {
     test("Then it should throw an error", async () => {
       global.fetch = jest.fn().mockResolvedValue("Error");
-      const update = repo.update({ test: "test" } as unknown as Partial<Scrub>);
+      const update = repo.update({
+        _id: "2",
+        test: "test",
+      } as unknown as Partial<Scrub>);
+      await expect(update).rejects.toThrow();
+    });
+  });
+
+  describe("When update method not receive a valid id", () => {
+    test("Then it should throw an error", async () => {
+      global.fetch = jest.fn().mockResolvedValue("Error");
+      const update = repo.update({
+        test: "test",
+      } as unknown as Partial<Scrub>);
       await expect(update).rejects.toThrow();
     });
   });

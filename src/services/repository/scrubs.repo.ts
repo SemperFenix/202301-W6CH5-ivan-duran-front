@@ -26,7 +26,8 @@ export class ScrubsRepo implements Repo<ServerResp> {
   }
 
   async update(info: Partial<Scrub>): Promise<ServerResp> {
-    const url = this.url + "/" + info._id;
+    if (!info._id) throw new Error("No id found");
+    const url = this.url + "/" + info._id.trim();
     const resp = await fetch(url, {
       method: "PATCH",
       body: JSON.stringify(info),
