@@ -26,7 +26,7 @@ describe("Given the New Item component", () => {
   });
   describe("When submitted", () => {
     test("Then it should call the create new Photo method", async () => {
-      const element = screen.getByTestId("form");
+      const element = screen.getByTestId("form") as string[];
       expect(element).toBeInTheDocument();
 
       (element[0] as unknown as string) = "Test";
